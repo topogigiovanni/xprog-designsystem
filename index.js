@@ -33,6 +33,47 @@ Button.defaultProps = {
   style: 'primary'
 };
 
+var Dialog = function Dialog(props) {
+  // if (!props.open) return null;
+  var classes = classnames({
+    'xprog-dialog': true,
+    'xs': props.maxWidth === 'xs' && !props.fullscreen,
+    'sm': props.maxWidth === 'sm' && !props.fullscreen,
+    'md': props.maxWidth === 'md' && !props.fullscreen,
+    'lg': props.maxWidth === 'lg' && !props.fullscreen,
+    'xl': props.maxWidth === 'xl' && !props.fullscreen,
+    'fullscreen': props.fullscreen,
+    'fx': props.direction === 'row',
+    'fy': props.direction === 'column',
+    'jc-start': props.justify === 'flex-start',
+    'jc-center': props.justify === 'center',
+    'jc-end': props.justify === 'flex-end',
+    'ai-start': props.align === 'flex-start',
+    'ai-center': props.align === 'center',
+    'ai-end': props.align === 'flex-end'
+  });
+  return /*#__PURE__*/React.createElement("div", {
+    className: "xprog-dialog-backdrop"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: classes
+  }, props.children));
+};
+
+Dialog.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.array.isRequired]),
+  maxWidth: PropTypes.string,
+  justify: PropTypes.string,
+  align: PropTypes.string,
+  fullscreen: PropTypes.bool
+};
+Dialog.defaultProps = {
+  maxWidth: 'md',
+  direction: 'row',
+  justify: 'center',
+  align: 'flex-start',
+  fullScreen: false
+};
+
 var Input = function Input(_ref) {
   var autoFocus = _ref.autoFocus,
       disabled = _ref.disabled,
@@ -90,9 +131,9 @@ Input.propTypes = {
 };
 Input.defaultProps = {
   autofocus: false,
-  disabled: "disabled",
+  disabled: 'disabled',
   invalid: false,
-  type: "text"
+  type: 'text'
 };
 var index = {
   Input: Input
@@ -128,7 +169,7 @@ Panel.propTypes = {
   style: PropTypes.string
 };
 
-var version = "1.1.4";
+var version = "1.1.52";
 
 var Version = function Version() {
   console.log('version ' + version);
@@ -136,6 +177,7 @@ var Version = function Version() {
 };
 
 exports.Button = Button;
+exports.Dialog = Dialog;
 exports.Form = index;
 exports.Icon = Icon;
 exports.Panel = Panel;

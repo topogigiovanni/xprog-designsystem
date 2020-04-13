@@ -1,0 +1,49 @@
+@use '../../styles' as *;
+
+.xprog-dialog-backdrop {
+  position: fixed;
+  z-index: 1;
+  @include fx(center, center);
+  @include p(40px);
+  @include w(calc(100vw - 80px));
+  @include h(calc(100vh - 80px));
+  @include bg(rgba(0, 0, 0, 0.5));
+}
+
+.xprog-dialog {
+  @include area(100%);
+  @include bg($color-white);
+  &.xs {
+    @include mw($xs);
+  }
+  &.sm {
+    @include mw($sm);
+  }
+  &.md {
+    @include mw($md);
+  }
+  &.lg {
+    @include mw($lg);
+  }
+  &.xl {
+    @include mw($xl);
+  }
+  &.fx {
+    @include fx(flex-start, flex-start);
+  }
+  &.fy {
+    @include fy(flex-start, flex-start);
+  }
+  &.jc-center {
+    @include jc(center);
+  }
+  &.jc-end {
+    @include jc(end);
+  }
+  &.ai-center {
+    @include ai(center);
+  }
+  &.ai-end {
+    @include ai(end);
+  }
+}
